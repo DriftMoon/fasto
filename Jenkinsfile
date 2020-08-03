@@ -4,7 +4,7 @@ pipeline {
     stage('build') {
       steps {
         echo 'build stage '
-        sh 'mvn clean install -Dlicense.skip=true'
+        sh '/opt/maven/apache-maven-3.6.3/bin/mvn clean install -Dlicense.skip=true'
         echo 'end build stage '
       }
     }
@@ -14,7 +14,7 @@ pipeline {
         stage('Test') {
           steps {
             echo 'Test stage'
-            sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.157.128:8081 -Dlicense.skip=true'
+            sh '/opt/maven/apache-maven-3.6.3/bin/mvn sonar:sonar -Dsonar.host.url=http://192.168.157.128:8081 -Dlicense.skip=true'
             echo 'post test'
           }
         }
