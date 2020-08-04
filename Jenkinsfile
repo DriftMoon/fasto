@@ -14,8 +14,9 @@ pipeline {
         stage('Test') {
           steps {
             echo 'Test stage'
-            sh '''cd /var/lib/jenkins/workspace/fasto_master/POC_PI_AWS-ear/target;
-ansible-playbook playimage.yml;
+            sh '''cd /opt/docker ;
+docker build -t playimage . ;
+ansible-playbook fastplay.yml;
 '''
             echo 'post test'
           }
