@@ -16,7 +16,7 @@ pipeline {
             echo 'Test stage'
             sh '''cd /opt/dockerdep ;
 cp /var/lib/jenkins/workspace/fasto_master/POC_PI_AWS-ear/target/POC_PI_AWS-ear.ear /opt/dockerdep/POC_PI_AWS-ear.ear;
-ansible-playbook --user master fastplay.yml;
+ansible-playbook --user jenkins fastplay.yml;
 '''
             echo 'post test'
           }
