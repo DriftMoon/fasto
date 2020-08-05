@@ -36,6 +36,12 @@ ansible-playbook --user jenkins fastplay.yml;
           }
         }
 
+        stage('meme') {
+          steps {
+            sh 'whoami'
+          }
+        }
+
       }
     }
 
