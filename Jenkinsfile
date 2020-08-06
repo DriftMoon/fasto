@@ -45,6 +45,20 @@ ansible-playbook --user jenkins /opt/dockerdep/fastplay.yml ;
       }
     }
 
+    stage('Deployment creation') {
+      steps {
+        echo 'Preparing the deployment ---> '
+        sh 'sudo su - ansible -c "sh sudo ansible-playbook --user root /home/master/k8s/Ansiblek8sdeployment.yml"'
+      }
+    }
+
+    stage('Service Creation') {
+      steps {
+        echo 'Service Creation ---->'
+        sh 'sudo su - ansible -c "sh sudo ansible-playbook --user root /home/master/k8s/Ansiblek8sservice.yml"'
+      }
+    }
+
   }
   environment {
     TESTER = 'mikasa'
