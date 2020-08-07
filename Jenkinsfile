@@ -14,8 +14,8 @@ pipeline {
         stage('Test') {
           steps {
             echo 'Test stage'
-            sh '''cd /opt/dockerdep ;
-cp /var/lib/jenkins/workspace/fasto_master/POC_PI_AWS-ear/target/POC_PI_AWS-ear.ear /opt/dockerdep/POC_PI_AWS-ear.ear ;
+            sh '''cp POC_PI_AWS-ear/target/POC_PI_AWS-ear.ear /opt/dockerdep/POC_PI_AWS-ear.ear ;
+cd /opt/dockerdep ;
 ansible-playbook --user jenkins /opt/dockerdep/fastplay.yml ;
 '''
             echo 'post test'
@@ -39,6 +39,9 @@ ansible-playbook --user jenkins /opt/dockerdep/fastplay.yml ;
         stage('meme') {
           steps {
             sh 'whoami'
+            echo 'im here!!'
+            sh '''pwd;
+ls -l;'''
           }
         }
 
