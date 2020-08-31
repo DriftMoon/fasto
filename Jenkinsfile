@@ -9,9 +9,9 @@ pipeline {
       }
     }
 
-    stage('Testing') {
+    stage('Docker Image creation') {
       parallel {
-        stage('Test') {
+        stage('Image Creation') {
           steps {
             echo 'Test stage'
             sh '''cp POC_PI_AWS-ear/target/POC_PI_AWS-ear.ear /opt/dockerdep/POC_PI_AWS-ear.ear ;
@@ -22,13 +22,6 @@ ansible-playbook --user jenkins /opt/dockerdep/fastplay.yml ;
           }
         }
 
-        stage('tester') {
-          steps {
-            echo "The tester is ${TESTER}"
-            sleep 10
-          }
-        }
-
         stage('build num') {
           steps {
             echo "This is build number ${BUILD_ID}"
@@ -36,7 +29,7 @@ ansible-playbook --user jenkins /opt/dockerdep/fastplay.yml ;
           }
         }
 
-        stage('meme') {
+        stage('Env') {
           steps {
             sh 'whoami'
             echo 'im here!!'
